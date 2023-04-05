@@ -1,0 +1,2 @@
+sail/poolformer_s24 512
+sail/poolformer_s36 512
