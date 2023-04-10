@@ -187,9 +187,9 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    if training_args.should_log:
-        # The default of training_args.log_level is passive, so we set log level at info here to have that default.
-        transformers.utils.logging.set_verbosity_info()
+    # if training_args.should_log:
+    #     # The default of training_args.log_level is passive, so we set log level at info here to have that default.
+    #     transformers.utils.logging.set_verbosity_info()
 
     log_level = training_args.get_process_log_level()
     logger.setLevel(log_level)
@@ -202,7 +202,7 @@ def main():
         f"Process rank: {training_args.local_rank}, device: {training_args.device}, n_gpu: {training_args.n_gpu}"
         + f"distributed training: {bool(training_args.local_rank != -1)}, 16-bits training: {training_args.fp16}"
     )
-    logger.info(f"Training/evaluation parameters {training_args}")
+    # logger.info(f"Training/evaluation parameters {training_args}")
 
     # Detecting last checkpoint.
     last_checkpoint = None
@@ -367,7 +367,13 @@ def main():
             checkpoint = training_args.resume_from_checkpoint
         elif last_checkpoint is not None:
             checkpoint = last_checkpoint
-        train_result = trainer.train(resume_from_checkpoint=checkpoint)
+
+        from torch.profiler import profile, record_function, ProfilerActivity
+        with profile(activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA], record_shapes=True) as prof:
+            with record_function("model_inference"):
+                train_result = trainer.train(resume_from_checkpoint=checkpoint)
+
+        print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
         trainer.save_model()
         trainer.log_metrics("train", train_result.metrics)
         trainer.save_metrics("train", train_result.metrics)

@@ -15,6 +15,7 @@ limitations under the License.
 -->
 
 # Commands run
+        bash run.sh sail/poolformer_s24 512
         bash run_all.sh all_ckpt_hac.txt
 
 # Image classification examples

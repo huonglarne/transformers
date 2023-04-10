@@ -19,7 +19,7 @@ COMMON_ARGS="""
     --do_train \
     --do_eval \
     --learning_rate 2e-5 \
-    --num_train_epochs 5 \
+    --num_train_epochs 1 \
     --logging_strategy steps \
     --logging_steps 100 \
     --evaluation_strategy epoch \
@@ -27,9 +27,10 @@ COMMON_ARGS="""
     --load_best_model_at_end True \
     --save_total_limit 1 \
     --report_to tensorboard \
-    --disable_tqdm True \
     --seed 42
     --cache_dir models \
+    --fp16 \
+    --skip_memory_metrics False \
 """
 
 /usr/bin/env python3 run_image_classification.py \

@@ -16,7 +16,8 @@ daemon_pid=$!
 while read model batch_size ; do
     echo Running: $model
     echo Batchsize: $batch_size
-    bash run.sh $model $batch_size 2>&1
+    # bash run.sh $model $batch_size 2>&1
+    # pyhton train.py
 done < $input_file
 
 kill -9 $daemon_pid

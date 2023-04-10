@@ -468,6 +468,7 @@ def main():
                     continue
 
             with accelerator.accumulate(model):
+                t1 = time.time()
                 outputs = model(**batch)
                 loss = outputs.loss
                 # We keep track of the loss at each epoch
@@ -477,6 +478,7 @@ def main():
                 optimizer.step()
                 lr_scheduler.step()
                 optimizer.zero_grad()
+                training_time = time.time() - t1
 
             # Checks if the accelerator has performed an optimization step behind the scenes
             if accelerator.sync_gradients:
