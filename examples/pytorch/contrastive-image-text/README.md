@@ -1,3 +1,7 @@
+# Run
+
+    python3 save_pretrained.py
+
 <!---
 Copyright 2022 The HuggingFace Team. All rights reserved.
 

@@ -23,6 +23,9 @@ Vision models: ViT(https://huggingface.co/models?filter=vit), CLIP (https://hugg
 Text models: BERT, ROBERTa (https://huggingface.co/models?filter=fill-mask)
 """
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning) 
+
 import logging
 import os
 import sys

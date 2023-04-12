@@ -167,3 +167,4 @@ tags
 
 # ruff
 .ruff_cache
+examples/pytorch/image-classification/=2.6.1
