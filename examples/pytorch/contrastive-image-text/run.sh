@@ -1,4 +1,4 @@
-LOG_DIR="./logs_new"
+LOG_DIR="./logs"
 OUTPUT_DIR="./outputs"
 mkdir -p $LOG_DIR
 mkdir -p $OUTPUT_DIR
@@ -8,6 +8,9 @@ bs=${2:-64}
 model_name=${model#*/}
 log_file="${LOG_DIR}/${model_name}.log"
 output_dir="${OUTPUT_DIR}/${model_name}"
+
+echo $log_file
+echo $output_dir
 
 python3 run_clip.py \
     --model_name_or_path $model \
@@ -26,5 +29,5 @@ python3 run_clip.py \
     --fp16 \
     # --max_train_samples 20 \
     # --max_eval_samples 2 \
-    --skip_memory_metrics False \
+    # --skip_memory_metrics False \
     2>&1 | tee $log_file

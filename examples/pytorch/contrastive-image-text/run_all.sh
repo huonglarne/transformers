@@ -14,7 +14,8 @@ daemon_pid=$!
 
 while read model batch_size ; do
     echo Running: $model
-    bash run.sh $model $batch_size 2>&1
+    echo Batchsize: $batch_size
+    bash run.sh $model $batch_size
 done < $input_file
 
 kill -9 $daemon_pid
