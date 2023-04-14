@@ -27,7 +27,4 @@ python3 run_clip.py \
     --learning_rate="5e-5" --warmup_steps="0" --weight_decay 0.1 \
     --overwrite_output_dir \
     --fp16 \
-    # --max_train_samples 20 \
-    # --max_eval_samples 2 \
-    # --skip_memory_metrics False \
     2>&1 | tee $log_file
