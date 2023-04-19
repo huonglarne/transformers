@@ -14,6 +14,8 @@ with open("model_names.txt", "r") as f:
 for line in model_names:
     model_name = line.split()[0]
 
+    print(f"Saving {model_name} ...")
+
     model = VisionTextDualEncoderModel.from_vision_text_pretrained(
         model_name, "roberta-base"
     )
@@ -22,5 +24,5 @@ for line in model_names:
     processor = VisionTextDualEncoderProcessor(image_processor, tokenizer)
 
     # save the model and processor
-    model.save_pretrained(model_name)
-    processor.save_pretrained(model_name)
+    model.save_pretrained("models/"+model_name)
+    processor.save_pretrained("models/"+model_name)
