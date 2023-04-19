@@ -1,5 +1,5 @@
-openai/clip-vit-large-patch14 128 
-openai/clip-vit-base-patch16 256
+openai/clip-vit-large-patch14 64 
+openai/clip-vit-base-patch16 128
 openai/clip-vit-base-patch32 256
-openai/clip-vit-large-patch14-336 128
+openai/clip-vit-large-patch14-336 64
   
