@@ -1,4 +1,4 @@
-torch==1.13
-torchvision==0.14
+torch==1.10.0+cu112
+torchvision==0.11
 datasets
 accelerate
