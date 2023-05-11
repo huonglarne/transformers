@@ -1,5 +1,5 @@
 openai
 clip*
-outputs
-log*
+*outputs*
+*log*
 *nfs*
