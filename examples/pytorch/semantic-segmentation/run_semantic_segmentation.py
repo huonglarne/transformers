@@ -89,7 +89,7 @@ class Resize:
 
     def __call__(self, image, target):
         image = functional.resize(image, self.size)
-        target = functional.resize(target, self.size, interpolation=transforms.InterpolationMode.NEAREST)
+        target = functional.resize(target, self.size, interpolation=Image.NEAREST)
         return image, target
 
 
@@ -362,7 +362,7 @@ def main():
             references=labels,
             num_labels=len(id2label),
             ignore_index=0,
-            reduce_labels=image_processor.do_reduce_labels,
+            # reduce_labels=image_processor.do_reduce_labels,
         )
         # add per category metrics as individual key-value pairs
         per_category_accuracy = metrics.pop("per_category_accuracy").tolist()
@@ -388,6 +388,7 @@ def main():
         cache_dir=model_args.cache_dir,
         revision=model_args.model_revision,
         use_auth_token=True if model_args.use_auth_token else None,
+        ignore_mismatched_sizes=True,
     )
     image_processor = AutoImageProcessor.from_pretrained(
         model_args.image_processor_name or model_args.model_name_or_path,
