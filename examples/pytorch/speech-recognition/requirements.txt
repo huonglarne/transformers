@@ -1,6 +1,9 @@
 datasets >= 1.18.0
-torch >= 1.5
-torchaudio
+torch == 1.13.0
+torchaudio ==0.14.0
 librosa
 jiwer
 evaluate
+transformers
+accelerate
+protobuf
