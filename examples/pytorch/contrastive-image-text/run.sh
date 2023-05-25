@@ -26,7 +26,6 @@ python3 run_clip.py \
     --per_device_eval_batch_size=$bs \
     --learning_rate="5e-5" --warmup_steps="0" --weight_decay 0.1 \
     --overwrite_output_dir \
-    --fp16 \
     --skip_memory_metrics False \
     --save_total_limit 2 \
     2>&1 | tee $log_file
