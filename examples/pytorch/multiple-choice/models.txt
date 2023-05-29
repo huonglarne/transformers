@@ -1,0 +1,11 @@
+google/canine-s 64
+YituTech/conv-bert-base 256
+facebook/data2vec-text-base 512
+nghuyong/ernie-2.0-base-en 512
+flaubert/flaubert_base_cased 128
+studio-ousia/luke-base 128
+google/rembert 128
+google/fnet-base 128
+google/mobilebert-uncased 64
+uw-madison/yoso-4096 64
+

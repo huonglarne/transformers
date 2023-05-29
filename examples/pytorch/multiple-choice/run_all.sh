@@ -8,12 +8,12 @@ input_file=$1
 
 mkdir -p ./logs
 
-# if [[ $HOSTNAME =~ "haca100" ]]; then
-#     bash mem-daemon-a100 2>&1 >> ./logs/gpu-mem.log &
-# else
-#     bash mem-daemon-hac 2>&1 >> ./logs/gpu-mem.log &
-# fi
-# daemon_pid=$!
+if [[ $HOSTNAME =~ "haca100" ]]; then
+    bash mem-daemon-a100 2>&1 >> ./logs/gpu-mem.log &
+else
+    bash mem-daemon-hac 2>&1 >> ./logs/gpu-mem.log &
+fi
+daemon_pid=$!
 
 while read model batch_size ; do
     echo Running: $model
@@ -21,5 +21,5 @@ while read model batch_size ; do
     bash run_swag.sh $model $batch_size 2>&1
 done < $input_file
 
-# kill -9 $daemon_pid
+kill -9 $daemon_pid
 echo Done
