@@ -1,0 +1,37 @@
+/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/common/utils.py:2091: UserWarning: torch.triangular_solve is deprecated in favor of torch.linalg.solve_triangularand will be removed in a future PyTorch release.
+torch.linalg.solve_triangular has its arguments reversed and does not return a copy of one of the inputs.
+X = torch.triangular_solve(B, A).solution
+should be replaced with
+X = torch.linalg.solve_triangular(A, B). (Triggered internally at ../aten/src/ATen/native/BatchLinearAlgebra.cpp:2115.)
+  'triangular_solve': type(dummy_tensor.triangular_solve(dummy_tensor)),
+2023-08-21 14:51:19,797 - torch.distributed.nn.jit.instantiator - INFO - Created a temporary directory at /tmp/tmpok4awbh8
+2023-08-21 14:51:19,797 - torch.distributed.nn.jit.instantiator - INFO - Writing /tmp/tmpok4awbh8/_remote_module_non_scriptable.py
+[2023-08-21 14:51:38.260] [info] Requesting resources for KT AI Accelerator from the server...
+[2023-08-21 14:51:39.275] [info] Initializing the worker daemon for KT AI Accelerator
+[2023-08-21 14:51:40.905] [info] [1/1] Connecting to resources on the server (192.168.110.10:24167)...
+[2023-08-21 14:51:40.916] [info] Establishing links to the resources...
+[2023-08-21 14:51:41.078] [info] KT AI Accelerator is ready to use.
+Traceback (most recent call last):
+  File "dummy.py", line 11, in <module>
+    output, _ = self_attn(x, x, x, attn_mask=attn_mask, key_padding_mask=None)
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/wrapper/moreh_wrapper.py", line 133, in wrapper
+    raise instance
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/wrapper/moreh_wrapper.py", line 74, in wrapper
+    return moreh_function(
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/nn/modules/activation.py", line 142, in forward
+    return F.multi_head_attention_forward(
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/wrapper/moreh_wrapper.py", line 133, in wrapper
+    raise instance
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/wrapper/moreh_wrapper.py", line 74, in wrapper
+    return moreh_function(
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/nn/functional.py", line 3748, in multi_head_attention_forward
+    outputs = frontend.register_multi_head_attention_forward(input_tensors, op)
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/common/frontend.py", line 751, in register_multi_head_attention_forward
+    return _register_operation_internal(input_tensors, [None] * 9, op)[0:2]
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/torch/_M/driver/common/frontend.py", line 604, in _register_operation_internal
+    output_tickets = moreh_f.create_operation(op_name, op.SerializeToString(),
+  File "/nas/.conda/envs/hf/lib/python3.8/site-packages/moreh/driver/moreh_f/moreh_f.py", line 1007, in create_operation
+    return _moreh_f.create_operation(operator_str, proto_str_ptr, input_tickets, inplace_output_tickets, grad_enabled)
+RuntimeError: IR_COND_CHECK_ERROR: attn_mask->shape(0) == L failed. File "../ir/action_add.cpp", line 6122
